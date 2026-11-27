@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>Infinito 3D — v3</title>
+<link rel="manifest" href="./manifest.webmanifest">
+<meta name="theme-color" content="#17231f">
+<link rel="apple-touch-icon" href="./icon-192.png">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap');
 
@@ -4573,6 +4576,12 @@
     document.addEventListener('DOMContentLoaded', initStudio);
   } else {
     initStudio();
+  }
+
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js').catch(() => {});
+    });
   }
 })();
 </script>
